@@ -134,18 +134,13 @@ How it works in this repo
 Running the full flow locally
 
 1. Start Keycloak (Docker command above) and configure realm + client.
-2. Start the SvelteKit app: `npm run dev`.
+2. Start the SvelteKit app: `npm run dev -- --open`.
 3. Open `http://localhost:5173` in your browser.
 4. You should be redirected to Keycloak. Log in with your test user.
 5. You’ll be redirected back to the app and see your `email` and `name` rendered.
 
 Common pitfalls and tips
 
-- Redirect URIs must exactly match what your app uses. This example uses:
-  - `http://localhost:5173/api/auth/callback/keycloak` (configured in code)
-  - In Keycloak, we permit `http://localhost:5173/api/auth/callback/*` for flexibility during dev.
-- Web origins must include your app origin (`http://localhost:5173`).
 - For local HTTP dev, cookies set with `secure: false` are required; in production use HTTPS and set `secure: true`.
-- Ensure `BETTER_AUTH_URL` matches the origin where your app is served.
 - If you change realm name, client ID, ports, or hostnames, update both the code and Keycloak settings accordingly.
 
