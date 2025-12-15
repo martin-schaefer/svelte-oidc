@@ -8,7 +8,7 @@ const setSessionHook: Handle = async ({
                                           event,
                                           resolve
                                       }) => {
-    // this hooks needs to run first in order to set session properly before running the next hook
+    // this hook needs to run first to set session properly before running the next hook
     return svelteKitHandler({ auth, event, resolve, building });
 };
 
@@ -16,7 +16,7 @@ const checkAuthHook: Handle = async ({
                                          event,
                                          resolve
                                      }) => {
-    // if user is signed in, session should be here if the setSessionHook hook has been run
+    // if the user is signed in, the session should be here if the setSessionHook hook has been run
     const headers = event.request.headers;
     const session = await auth.api.getSession({
         headers
